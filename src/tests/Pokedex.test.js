@@ -25,13 +25,11 @@ describe('Testa o componente <Pokedex.js />', () => {
     expect(pokemonCard).toBeInTheDocument();
 
     pokemons.forEach(({ name }) => {
-      const displayedPokemon = getByText(name);
-      expect(displayedPokemon).toBeInTheDocument();
+      expect(getByText(name)).toBeInTheDocument();
       userEvent.click(proximoPokemon);
     });
 
-    const displayedPokemon = getByText(/pikachu/i);
-    expect(displayedPokemon).toBeInTheDocument();
+    expect(getByText(/pikachu/i)).toBeInTheDocument();
   });
 
   it('Testa se a Pokédex tem os botões de filtro.', () => {
@@ -55,13 +53,11 @@ describe('Testa o componente <Pokedex.js />', () => {
         .forEach((p, i) => {
           if (i > 1) {
             userEvent.click(buttonNext);
-            const pokeType = getByText(p.name);
             expect(pokeType).toBeInTheDocument();
             expect(buttonAll).toBeInTheDocument();
           }
           if (i === 0) {
-            const pokeType = getByText(p.name);
-            expect(pokeType).toBeInTheDocument();
+            expect(getByText(p.name)).toBeInTheDocument();
             expect(buttonAll).toBeInTheDocument();
           }
         });
@@ -78,11 +74,9 @@ describe('Testa o componente <Pokedex.js />', () => {
     const buttonNext = getByRole('button', { name: /Próximo pokémon/i });
 
     userEvent.click(buttonNext);
-    let displayedPokemon = getByText(/Charmander/i);
-    expect(displayedPokemon).toBeInTheDocument();
+    expect(getByText(/Charmander/i)).toBeInTheDocument();
 
     userEvent.click(buttonAll);
-    displayedPokemon = getByText(/Pikachu/i);
-    expect(displayedPokemon).toBeInTheDocument();
+    expect(getByText(/Pikachu/i)).toBeInTheDocument();
   });
 });
