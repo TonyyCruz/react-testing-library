@@ -1,6 +1,6 @@
 import React from 'react';
 import NotFound from '../components/NotFound';
-import RenderWithRouter from '../services/RenderWithRouter';
+import RenderWithRouter from './RenderWithRouter';
 
 it('Testa o conteudo da página <NotFound.js />', () => {
   const { getByRole, getByAltText } = RenderWithRouter(<NotFound />);

@@ -8,8 +8,7 @@ const renderWithRouter = (component) => {
   return ({
     ...render(<Router history={ history }>{ component }</Router>),
     history,
-  })
-}
+  });
+};
 
-module.exports = renderWithRouter;
-
+export default renderWithRouter;

@@ -1,7 +1,7 @@
 import React from 'react';
 // import { screen } from '@testing-library/react';
 // import userEvent from '@testing-library/user-event';
-import RenderWithRouter from '../services/RenderWithRouter';
+import RenderWithRouter from './RenderWithRouter';
 import About from '../components/About';
 
 describe('Teste se o componente <About /> tem o comportamento esperado', () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import FavoritePokemons from '../components/FavoritePokemons';
-import RenderWithRouter from '../services/RenderWithRouter';
+import RenderWithRouter from './RenderWithRouter';
 
 describe('Testa se <FavoritePokemons.js /> tem o comportamento sperado', () => {
   it('Testa se a página exibe o conteudo correto', () => {

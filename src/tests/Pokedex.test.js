@@ -1,7 +1,7 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 import App from '../App';
-import RenderWithRouter from '../services/RenderWithRouter';
+import RenderWithRouter from './RenderWithRouter';
 import pokemons from '../data';
 
 describe('Testa o componente <Pokedex.js />', () => {
