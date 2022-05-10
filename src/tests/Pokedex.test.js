@@ -72,12 +72,21 @@ describe('Testa o componente <Pokedex.js />', () => {
   });
 
   it('Testa se a Pokédex contém um botão para resetar o filtro', () => {
-    const { getByRole } = RenderWithRouter(<App />);
+    const { getByRole, getByText } = RenderWithRouter(<App />);
 
     const buttonAll = getByRole('button', { name: 'All' });
-    userEvent.click(buttonAll);
-    expect(filterPokemons()).toHaveBeenCalledWith('all');
+    const buttonNext = getByRole('button', { name: /Próximo pokémon/i });
 
-    console.log('=======', buttonAll);
+    userEvent.click(buttonNext);
+    let displayedPokemon = getByText(/Charmander/i);
+    expect(displayedPokemon).toBeInTheDocument();
+
+    userEvent.click(buttonAll);
+    displayedPokemon = getByText(/Pikachu/i);
+    expect(displayedPokemon).toBeInTheDocument();
+
+    // userEvent.click(buttonNext);
+    // displayedPokemon = getByText(/Charmander/i);
+    // expect(displayedPokemon).toBeInTheDocument();
   });
 });
