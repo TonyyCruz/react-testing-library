@@ -84,9 +84,5 @@ describe('Testa o componente <Pokedex.js />', () => {
     userEvent.click(buttonAll);
     displayedPokemon = getByText(/Pikachu/i);
     expect(displayedPokemon).toBeInTheDocument();
-
-    // userEvent.click(buttonNext);
-    // displayedPokemon = getByText(/Charmander/i);
-    // expect(displayedPokemon).toBeInTheDocument();
   });
 });
