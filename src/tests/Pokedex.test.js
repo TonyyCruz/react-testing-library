@@ -75,7 +75,8 @@ describe('Testa o componente <Pokedex.js />', () => {
     const { getByRole } = RenderWithRouter(<App />);
 
     const buttonAll = getByRole('button', { name: 'All' });
-    // userEvent.click(buttonAll);
+    userEvent.click(buttonAll);
+    expect(filterPokemons()).toHaveBeenCalledWith('all');
 
     console.log('=======', buttonAll);
   });

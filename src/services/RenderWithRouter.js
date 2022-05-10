@@ -11,5 +11,5 @@ const renderWithRouter = (component) => {
   })
 }
 
-export default renderWithRouter;
+module.exports = renderWithRouter;
 

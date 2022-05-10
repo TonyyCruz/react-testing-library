@@ -1,8 +1,10 @@
 import React from 'react';
 // import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import RenderWithRouter from '../services/RenderWithRouter';
+// import RenderWithRouter from '../services/RenderWithRouter';
 import App from '../App';
+
+const RenderWithRouter = require('../services/RenderWithRouter');
 
 //
 describe('Teste se o componente <App /> tem o comportamento esperado', () => {
