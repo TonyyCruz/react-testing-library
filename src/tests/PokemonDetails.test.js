@@ -39,8 +39,5 @@ describe('Teste o componente <PokemonDetails.js />', () => {
     expect(PikachuLocat[1]).toBeInTheDocument();
     expect(PikachuLocat[0].src).toBe('https://cdn2.bulbagarden.net/upload/0/08/Kanto_Route_2_Map.png');
     expect(PikachuLocat[1].src).toBe('https://cdn2.bulbagarden.net/upload/b/bd/Kanto_Celadon_City_Map.png');
-
-    // const starImage = getByRole('img', { name: 'Pikachu is marked as favorite' });
-    // expect(starImage.src).toBe('http://localhost/star-icon.svg');
   });
 });
