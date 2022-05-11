@@ -1,40 +1,46 @@
-// import userEvent from '@testing-library/user-event';
-// import React from 'react';
-// import App from '../App';
-// import RenderWithRouter from './RenderWithRouter';
+import userEvent from '@testing-library/user-event';
+import React from 'react';
+import App from '../App';
+import RenderWithRouter from './RenderWithRouter';
 
-// describe('Testa o componente <Pokemon.js />', () => {
-//   // beforeEach(() => RenderWithRouter(<App />));
-//   it('Testa se é renderizado um card com as informações do pokémon', () => {
-//     const { history, getByRole, getByTestId } = RenderWithRouter(<App />);
+describe('Teste o componente <PokemonDetails.js />', () => {
+  it('Teste se detalhadas do pokémon selecionado são mostradas na tela', () => {
+    const { history, getByRole, getByText } = RenderWithRouter(<App />);
+    const paragraph = /This intelligent Pokémon roasts hard berries with electricity/i;
 
-//     const pokeInfo = getByRole('link', { name: /More details/i });
-//     expect(pokeInfo).toBeInTheDocument();
-//     userEvent.click(pokeInfo);
+    const pokeInfoButton = getByRole('link', { name: /More details/i });
+    userEvent.click(pokeInfoButton);
+    expect(pokeInfoButton).not.toBeInTheDocument();
 
-//     expect(getByRole('heading', {
-//       level: 2, name: 'Pikachu Details' })).toBeInTheDocument();
-//     expect(getByTestId('pokemon-name')).toHaveTextContent(/Pikachu/i);
-//     expect(getByTestId('pokemon-type')).toHaveTextContent(/Electric/i);
-//     expect(getByTestId('pokemon-weight')).toHaveTextContent(
-//       /Average weight: 6.0 kg/i,
-//     );
+    expect(getByRole('heading', {
+      level: 2, name: 'Pikachu Details' })).toBeInTheDocument();
+    expect(getByRole('heading', {
+      level: 2, name: 'Summary' })).toBeInTheDocument();
+    expect(getByRole('heading', {
+      level: 2, name: 'Game Locations of Pikachu' })).toBeInTheDocument();
+    expect(getByText(paragraph)).toBeInTheDocument();
 
-//     const { pathname } = history.location;
-//     expect(pathname).toBe('/pokemons/25');
-//   });
+    const { pathname } = history.location;
+    expect(pathname).toBe('/pokemons/25');
+  });
 
-//   it('Testa se o pokemon é exibido com as imagens corretas', () => {
-//     const { getByRole, getByLabelText } = RenderWithRouter(<App />);
+  it('Teste se existe na página os mapas contendo as localizações do pokémon', () => {
+    const { getByRole, getAllByRole, getByText,
+      getByLabelText } = RenderWithRouter(<App />);
 
-//     userEvent.click(getByRole('link', { name: /More details/i }));
-//     userEvent.click(getByLabelText(/Pokémon favoritado?/i));
+    userEvent.click(getByRole('link', { name: /More details/i }));
 
-//     const pokImage = getByRole('img', { name: 'Pikachu sprite' });
-//     expect(pokImage).toBeInTheDocument();
-//     expect(pokImage.src).toBe('https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
+    expect(getByLabelText(/Pokémon favoritado?/i)).toBeInTheDocument();
+    expect(getByText(/Kanto Viridian Forest/i)).toBeInTheDocument();
+    expect(getByText(/Kanto Power Plant/i)).toBeInTheDocument();
 
-//     const starImage = getByRole('img', { name: 'Pikachu is marked as favorite' });
-//     expect(starImage.src).toBe('http://localhost/star-icon.svg');
-//   });
-// });
+    const PikachuLocat = getAllByRole('img', { name: 'Pikachu location' });
+    expect(PikachuLocat[0]).toBeInTheDocument();
+    expect(PikachuLocat[1]).toBeInTheDocument();
+    expect(PikachuLocat[0].src).toBe('https://cdn2.bulbagarden.net/upload/0/08/Kanto_Route_2_Map.png');
+    expect(PikachuLocat[1].src).toBe('https://cdn2.bulbagarden.net/upload/b/bd/Kanto_Celadon_City_Map.png');
+
+    // const starImage = getByRole('img', { name: 'Pikachu is marked as favorite' });
+    // expect(starImage.src).toBe('http://localhost/star-icon.svg');
+  });
+});

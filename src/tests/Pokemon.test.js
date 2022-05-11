@@ -9,7 +9,6 @@ describe('Testa o componente <Pokemon.js />', () => {
 
     const pokeInfo = getByRole('link', { name: /More details/i });
     expect(pokeInfo).toBeInTheDocument();
-    // userEvent.click(pokeInfo);
 
     expect(getByTestId('pokemon-name')).toHaveTextContent(/Pikachu/i);
     expect(getByTestId('pokemon-type')).toHaveTextContent(/Electric/i);
