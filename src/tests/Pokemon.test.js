@@ -4,6 +4,7 @@ import App from '../App';
 import RenderWithRouter from './RenderWithRouter';
 
 describe('Testa o componente <Pokemon.js />', () => {
+  // beforeEach(() => RenderWithRouter(<App />));
   it('Testa se é renderizado um card com as informações do pokémon', () => {
     const { getByRole, getByTestId } = RenderWithRouter(<App />);
 
