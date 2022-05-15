@@ -15,17 +15,18 @@ describe('Testa o componente <Pokedex.js />', () => {
   it('Testa se o botão "Próximo pokémon" tem o comportamento esperado', () => {
     const { getByTestId, getByText, getAllByTestId } = RenderWithRouter(<App />);
 
+    const pokemonNameId = 'pokemon-name';
     const proximoPokemon = getByTestId('next-pokemon');
-    const pokemonCard = getByTestId('pokemon-name');
-    const allPokemonCard = getAllByTestId('pokemon-name');
+    const pokemonCard = getByTestId(pokemonNameId);
 
-    expect(allPokemonCard).toHaveLength(1);
+    expect(getAllByTestId(pokemonNameId)).toHaveLength(1);
     expect(proximoPokemon).toBeInTheDocument();
     expect(proximoPokemon).toHaveTextContent('Próximo pokémon');
     expect(pokemonCard).toBeInTheDocument();
 
     pokemons.forEach(({ name }) => {
       expect(getByText(name)).toBeInTheDocument();
+      expect(getAllByTestId(pokemonNameId)).toHaveLength(1);
       userEvent.click(proximoPokemon);
     });
 
