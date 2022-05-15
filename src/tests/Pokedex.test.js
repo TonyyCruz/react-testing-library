@@ -19,7 +19,6 @@ describe('Testa o componente <Pokedex.js />', () => {
     const proximoPokemon = getByTestId('next-pokemon');
     const pokemonCard = getByTestId(pokemonNameId);
 
-    expect(getAllByTestId(pokemonNameId)).toHaveLength(1);
     expect(proximoPokemon).toBeInTheDocument();
     expect(proximoPokemon).toHaveTextContent('Próximo pokémon');
     expect(pokemonCard).toBeInTheDocument();
