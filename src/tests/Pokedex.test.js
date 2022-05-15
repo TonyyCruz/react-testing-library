@@ -36,7 +36,7 @@ describe('Testa o componente <Pokedex.js />', () => {
     const { getByText, getAllByTestId,
       getByRole } = RenderWithRouter(<App />);
 
-    const seven = 7;
+    const buttonLength = 7;
     const typeButton = ['Electric', 'Fire', 'Bug', 'Poison', 'Psychic',
       'Normal', 'Dragon'];
     const buttons = getAllByTestId('pokemon-type-button');
@@ -63,7 +63,7 @@ describe('Testa o componente <Pokedex.js />', () => {
         });
     });
 
-    expect(buttons).toHaveLength(seven);
+    expect(buttons).toHaveLength(buttonLength);
     expect(buttonAll).toBeInTheDocument();
   });
 
